@@ -51,14 +51,30 @@ $(function() {
             range : range
         });
         slider.noUiSlider.on('update', function(values) {
-            current = _.find(data, { percent : parseFloat(values[0]) });
+            var currentIndex = _.findIndex(data, { percent : parseFloat(values[0]) });
+            current = data[currentIndex];
             $('.text').html(current.texts.join('<br><br>'));
+            $('.steps__step').removeClass('current');
+            $($('.steps__step').get(currentIndex)).addClass('current');
         });
 
         /*
         ** Controls
         */
-        var timer;
+        var timer,
+            playPause = function(play) {
+                if (play) {
+                    window.clearTimeout(timer);
+                    timer = window.setInterval(function() {
+                        $('.next').click();
+                    }, 1000);
+                    $('.playpause').text('||');
+                } else {
+                    window.clearTimeout(timer);
+                    timer = null;
+                    $('.playpause').text('|>');
+                }
+            };
 
         $('.prev').click(function() {
             var currentIndex = _.findIndex(data, current);
@@ -74,21 +90,12 @@ $(function() {
             if (currentIndex < data.length - 1) {
                 slider.noUiSlider.set(data[currentIndex + 1].percent);
             } else {
-                window.clearTimeout(timer);
+                playPause(false);
             }
         });
 
         $('.playpause').click(function() {
-            if (timer != null) {
-                window.clearTimeout(timer);
-                timer = null;
-                $(this).text('|>');
-            } else {
-                timer = window.setInterval(function() {
-                    $('.next').click();
-                }, 1000);
-                $(this).text('||');
-            }
+            playPause(timer == null);
         });
     });
 });
