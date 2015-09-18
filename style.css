@@ -70,3 +70,13 @@ html, body, .container {
 
     background-color: #e61e49;
 }
+
+button {
+    padding: .5em 1em;
+
+    background-color: #e61e49;
+
+    color: #f4f4f4;
+
+    border: none;
+}
