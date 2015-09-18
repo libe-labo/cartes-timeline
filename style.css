@@ -1,0 +1,60 @@
+html, body, .container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 0 2em;
+
+    box-sizing: border-box;
+}
+
+.maps, .maps img {
+    width: 100%;
+    min-height: 350px;
+}
+
+#slider {
+    width: 100%;
+    margin: 0 auto;
+
+    border-radius: 0;
+}
+
+#slider .noUi-base, #slider .noUi-origin {
+    border-radius: 0;
+}
+
+#slider .noUi-handle {
+    width: 14px;
+    left: -7px;
+
+    box-shadow: none;
+}
+
+#slider .noUi-handle:before, #slider .noUi-handle:after {
+    display: none;
+}
+
+
+.steps {
+    position: relative;
+
+    width: 100%;
+    height: 2em;
+
+    margin: 0 auto;
+}
+
+.steps__step {
+    display: inline-block;
+
+    position: absolute;
+    top: 0;
+
+    width: 1px;
+    height: 100%;
+
+    background-color: #c6c6c6;
+}
