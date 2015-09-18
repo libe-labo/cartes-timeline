@@ -81,7 +81,7 @@ $(function() {
 
             if (currentIndex > 0) {
                 slider.noUiSlider.set(data[currentIndex - 1].percent);
-                playPause(true);
+                playPause(timer != null);
             }
         });
 
@@ -90,7 +90,7 @@ $(function() {
 
             if (currentIndex < data.length - 1) {
                 slider.noUiSlider.set(data[currentIndex + 1].percent);
-                playPause(true);
+                playPause(timer != null);
             } else {
                 playPause(false);
             }
