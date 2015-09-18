@@ -9,7 +9,8 @@ $(function() {
             return {
                 rawDate : d.Date,
                 date : moment(d.Date, 'DD/MM/YYYY'),
-                text : d.Texte
+                text : d.Texte,
+                time : parseInt(d.time || 1000)
             };
         }), function(d) {
             return d.rawDate != null && d.text != null;// && d.rawDate !== '01/01/1993'; // TMP
@@ -19,7 +20,8 @@ $(function() {
             return {
                 rawDate : d[0].rawDate,
                 date : d[0].date,
-                texts : _.pluck(d, 'text')
+                texts : _.pluck(d, 'text'),
+                time : _.sum(d, 'time')
             };
         }).value();
 
@@ -65,9 +67,9 @@ $(function() {
             playPause = function(play) {
                 if (play) {
                     window.clearTimeout(timer);
-                    timer = window.setInterval(function() {
+                    timer = window.setTimeout(function() {
                         $('.next').click();
-                    }, 1000);
+                    }, current.time);
                     $('.playpause').find('i.fa').removeClass('fa-play').addClass('fa-pause');
                 } else {
                     window.clearTimeout(timer);
@@ -90,7 +92,7 @@ $(function() {
 
             if (currentIndex < data.length - 1) {
                 slider.noUiSlider.set(data[currentIndex + 1].percent);
-                playPause(timer != null);
+                playPause(timer != null && currentIndex < data.length - 2);
             } else {
                 playPause(false);
             }
