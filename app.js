@@ -68,11 +68,11 @@ $(function() {
                     timer = window.setInterval(function() {
                         $('.next').click();
                     }, 1000);
-                    $('.playpause').text('||');
+                    $('.playpause').find('i.fa').removeClass('fa-play').addClass('fa-pause');
                 } else {
                     window.clearTimeout(timer);
                     timer = null;
-                    $('.playpause').text('|>');
+                    $('.playpause').find('i.fa').removeClass('fa-pause').addClass('fa-play');
                 }
             };
 
