@@ -1,3 +1,9 @@
+@font-face{font-family:'syntheselibeweb';src:url('http://s1.libe.com/newsite/css/fonts/syntheselibeweb-regular.woff?63585f482767') format('woff'),url('http://s1.libe.com/newsite/css/fonts/syntheselibeweb-regular.ttf?c1ec2045c763') format('truetype');font-style:normal;font-weight:400}@font-face{font-family:'syntheselibeweb';src:url('http://s1.libe.com/newsite/css/fonts/syntheselibeweb-bold.woff?366e30058e2c') format('woff'),url('http://s1.libe.com/newsite/css/fonts/syntheselibeweb-bold.ttf?205aecd9c382') format('truetype');font-style:normal;font-weight:600}@font-face{font-family:'libesansweb-condensed';src:url('http://s1.libe.com/newsite/css/fonts/libesansweb-condensed-regular.woff?7cc5945d0371') format('woff'),url('http://s1.libe.com/newsite/css/fonts/libesansweb-condensed-regular.otf?874d87b5daef') format('opentype');font-style:normal;font-weight:400}@font-face{font-family:'libesansweb-condensed';src:url('http://s1.libe.com/newsite/css/fonts/libesansweb-condensed-light.woff?c8c56272dbc6') format('woff'),url('http://s1.libe.com/newsite/css/fonts/libesansweb-condensed-light.otf?50dc3f81cd3f') format('opentype');font-style:normal;font-weight:200}@font-face{font-family:'libesansweb-semicondensed';src:url('http://s1.libe.com/newsite/css/fonts/libesansweb-semicondensed-regular.woff?1007eb028bc6') format('woff'),url('http://s1.libe.com/newsite/css/fonts/libesansweb-semicondensed-regular.otf?142816fbbbf4') format('opentype');font-style:normal;font-weight:400}@font-face{font-family:'libesansweb-semicondensed';src:url('http://s1.libe.com/newsite/css/fonts/libesansweb-semicondensed-black.woff?b06e714b33bb') format('woff'),url('http://s1.libe.com/newsite/css/fonts/libesansweb-semicondensed-black.otf?3e82823e279f') format('opentype');font-style:normal;font-weight:800}@font-face{font-family:'libetypewriter-regular';src:url('http://s1.libe.com/newsite/css/fonts/libetypewriter-regular.woff?fb55328d4888') format('woff'),url('http://s1.libe.com/newsite/css/fonts/libetypewriter-regular.otf?9c6e283b484d') format('opentype');font-style:normal;font-weight:400}@font-face{font-family:'libetypewriter-regular-underline';src:url('http://s1.libe.com/newsite/css/fonts/libetypewriterweb-regularunderline.woff?f534906cd97d') format('woff'),url('http://s1.libe.com/newsite/css/fonts/libetypewriterweb-regularunderline.otf?761728e1fc1f') format('opentype');font-style:normal;font-weight:400}@font-face{font-family:'libesansweb-black';src:url('http://s1.libe.com/newsite/css/fonts/libesansweb-black.woff?6ee0c8d8547f') format('woff'),url('http://s1.libe.com/newsite/css/fonts/libesansweb-black.otf?ce9dbbf47e0e') format('opentype');font-style:normal;font-weight:400}
+
+.hidden {
+    display: none;
+}
+
 html, body, .container {
     width: 100%;
     margin: 0;
@@ -7,7 +13,7 @@ html, body, .container {
 }
 
 .container {
-    padding: 0 2em;
+    /*padding: 0 2em;*/
 
     box-sizing: border-box;
 
@@ -18,14 +24,25 @@ html, body, .container {
 
 .maps, .maps img {
     width: 100%;
-    min-height: 350px;
+}
+
+.maps {
+    position: relative;
+}
+
+.maps__top-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 #slider {
-    width: 100%;
-    margin: 0 auto;
+    width: 95%;
+    margin: 1em auto 0 auto;
 
     border-radius: 0;
+
+    box-shadow: none;
 }
 
 #slider .noUi-base, #slider .noUi-origin {
@@ -35,6 +52,8 @@ html, body, .container {
 #slider .noUi-handle {
     width: 14px;
     left: -7px;
+
+    border-radius: 0;
 
     box-shadow: none;
 }
@@ -47,7 +66,7 @@ html, body, .container {
 .steps {
     position: relative;
 
-    width: 100%;
+    width: 95%;
     height: 1em;
 
     margin: 0 auto;
@@ -77,6 +96,16 @@ html, body, .container {
     background-color: #e61e49;
 }
 
+.date {
+    position: relative;
+    top: 0;
+
+    color: #e61e49;
+    font-family: 'libesansweb-semicondensed', sans-serif;
+    font-weight: bold;
+    letter-spacing: 0.07em;
+}
+
 .buttons {
     margin-bottom: 2em;
 
@@ -86,9 +115,12 @@ html, body, .container {
 button {
     padding: .5em 1em;
 
-    background-color: #e61e49;
+    background-color: #f4f4f4;
 
-    color: #f4f4f4;
+    font-weight: bold;
+    color: #e61e49;
 
-    border: none;
+    border: 2px solid #e61e49;
+
+    cursor: pointer;
 }
