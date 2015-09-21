@@ -21,15 +21,24 @@
     </head>
     <body>
         <div class="container">
-            <div class="maps"></div>
-            <div id="slider"></div>
-            <div class="steps"></div>
+            <div class="maps">
+                <img src="assets/LIB-Schengen-Fond2-01.svg">
+                <img class="maps__top-layer" src="assets/LIB-Schengen-Fond1-01.svg">
+            </div>
             <p class="buttons">
-                <button class="prev"><i class="fa fa-fast-backward"></i></button>
-                <button class="playpause"><i class="fa fa-play"></i></button>
-                <button class="next"><i class="fa fa-fast-forward"></i></button>
+                <button class="start">Démarrer</button>
             </p>
-            <p class="text"></p>
+            <div class="hidden">
+                <div id="slider"></div>
+                <div class="steps"></div>
+                <span class="date"></span>
+                <p class="buttons">
+                    <button class="prev"><i class="fa fa-fast-backward"></i></button>
+                    <button class="playpause hidden"><i class="fa fa-play"></i></button>
+                    <button class="next"><i class="fa fa-fast-forward"></i></button>
+                </p>
+                <p class="text"></p>
+            </div>
         </div>
     </body>
 </html>

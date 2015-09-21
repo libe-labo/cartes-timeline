@@ -9,8 +9,10 @@ $(function() {
             return {
                 rawDate : d.Date,
                 date : moment(d.Date, 'DD/MM/YYYY'),
+                displayDate : d['Date affichée'],
                 text : d.Texte,
-                time : parseInt(d.time || 1000)
+                time : parseInt(d.time || 1000),
+                pic : d.Image
             };
         }), function(d) {
             return d.rawDate != null && d.text != null;// && d.rawDate !== '01/01/1993'; // TMP
@@ -20,6 +22,8 @@ $(function() {
             return {
                 rawDate : d[0].rawDate,
                 date : d[0].date,
+                displayDate : d[0].displayDate,
+                pic : d[0].pic,
                 texts : _.pluck(d, 'text'),
                 time : _.sum(d, 'time')
             };
@@ -47,18 +51,41 @@ $(function() {
         });
 
         var slider = document.getElementById('slider');
-        noUiSlider.create(slider, {
-            start : 0,
-            snap : true,
-            range : range
-        });
-        slider.noUiSlider.on('update', function(values) {
-            var currentIndex = _.findIndex(data, { percent : parseFloat(values[0]) });
-            current = data[currentIndex];
-            $('.text').html(current.texts.join('<br><br>'));
-            $('.steps__step').removeClass('current');
-            $($('.steps__step').get(currentIndex)).addClass('current');
-        });
+
+        var start = function() {
+            noUiSlider.create(slider, {
+                start : 0,
+                snap : true,
+                range : range
+            });
+            slider.noUiSlider.on('update', function(values) {
+                var currentIndex = _.findIndex(data, { percent : parseFloat(values[0]) });
+                current = data[currentIndex];
+
+                $('.date').text(current.displayDate);
+                var containerWidth = $('.date').parent().innerWidth(),
+                    dateWidth = $('.date').outerWidth();
+                $('.date').css('left', Math.max(
+                    0,
+                    Math.min(
+                        containerWidth - dateWidth,
+                        (containerWidth * (current.percent / 100)) - (dateWidth / 2)
+                    )
+                ));
+
+                $('.text').html(current.texts.join('<br><br>'));
+
+                $('.maps__top-layer').attr('src', 'assets/' + current.pic + '.svg');
+
+                $('.steps__step').removeClass('current');
+                $($('.steps__step').get(currentIndex)).addClass('current');
+            });
+
+            $('#slider').parent().removeClass('hidden');
+
+            $('.start').parent().addClass('hidden');
+        };
+
 
         /*
         ** Controls
@@ -101,5 +128,7 @@ $(function() {
         $('.playpause').click(function() {
             playPause(timer == null);
         });
+
+        $('.start').click(start);
     });
 });
