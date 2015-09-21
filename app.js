@@ -75,7 +75,8 @@ $(function() {
 
                 $('.text').html(current.texts.join('<br><br>'));
 
-                $('.maps__top-layer').attr('src', 'assets/' + current.pic + '.svg');
+                $('.maps__top-layer').attr('src', 'assets/' + current.pic + '.svg')
+                                     .css('width', String($('.container').innerWidth()) + 'px');
 
                 $('.steps__step').removeClass('current');
                 $($('.steps__step').get(currentIndex)).addClass('current');
