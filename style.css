@@ -124,3 +124,11 @@ button {
 
     cursor: pointer;
 }
+
+button[disabled] {
+    color: #c6c6c6;
+
+    border-color: #c6c6c6;
+
+    cursor: default;
+}

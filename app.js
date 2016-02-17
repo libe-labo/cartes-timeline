@@ -62,6 +62,9 @@ $(function() {
                 var currentIndex = _.findIndex(data, { percent: parseFloat(values[0]) });
                 current = data[currentIndex];
 
+                $('.prev').attr('disabled', currentIndex <= 0);
+                $('.next').attr('disabled', currentIndex >= data.length - 1);
+
                 $('.date').text(current.displayDate);
                 var containerWidth = $('.date').parent().innerWidth(),
                     dateWidth = $('.date').outerWidth();
