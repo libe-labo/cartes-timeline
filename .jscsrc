@@ -3,5 +3,9 @@
     "validateQuoteMarks": "'",
     "maximumLineLength": 100,
     "requireDotNotation": true,
-    "requireSemicolons": true
+    "requireSemicolons": true,
+    "requireSpacesInAnonymousFunctionExpression": false,
+    "requireTrailingComma": false,
+    "requirePaddingNewLinesAfterBlocks": false,
+    "disallowMultipleVarDecl": false
 }

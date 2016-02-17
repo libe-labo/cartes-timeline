@@ -7,12 +7,12 @@ $(function() {
     $.get('assets/data.tsv', function(rawData) {
         var data = _.filter(d3.tsv.parse(rawData, function(d) {
             return {
-                rawDate : d.Date,
-                date : moment(d.Date, 'DD/MM/YYYY'),
-                displayDate : d['Date affichée'],
-                text : d.Texte,
-                time : parseInt(d.time || 1000),
-                pic : d.Image
+                rawDate: d.Date,
+                date: moment(d.Date, 'DD/MM/YYYY'),
+                displayDate: d['Date affichée'],
+                text: d.Texte,
+                time: parseInt(d.time || 1000),
+                pic: d.Image
             };
         }), function(d) {
             return d.rawDate != null && d.text != null;// && d.rawDate !== '01/01/1993'; // TMP
@@ -20,12 +20,12 @@ $(function() {
 
         data = _.chain(data).groupBy('rawDate').values().map(function(d) {
             return {
-                rawDate : d[0].rawDate,
-                date : d[0].date,
-                displayDate : d[0].displayDate,
-                pic : d[0].pic,
-                texts : _.pluck(d, 'text'),
-                time : _.sum(d, 'time')
+                rawDate: d[0].rawDate,
+                date: d[0].date,
+                displayDate: d[0].displayDate,
+                pic: d[0].pic,
+                texts: _.pluck(d, 'text'),
+                time: _.sum(d, 'time')
             };
         }).value();
 
@@ -54,12 +54,12 @@ $(function() {
 
         var start = function() {
             noUiSlider.create(slider, {
-                start : 0,
-                snap : true,
-                range : range
+                start: 0,
+                snap: true,
+                range: range
             });
             slider.noUiSlider.on('update', function(values) {
-                var currentIndex = _.findIndex(data, { percent : parseFloat(values[0]) });
+                var currentIndex = _.findIndex(data, { percent: parseFloat(values[0]) });
                 current = data[currentIndex];
 
                 $('.date').text(current.displayDate);
